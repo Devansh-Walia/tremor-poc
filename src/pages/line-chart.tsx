@@ -1,4 +1,4 @@
-import { Card, Title, LineChart } from "@tremor/react";
+import { Card, Title, LineChart, AreaChart } from "@tremor/react";
 
 const chartdata = [
   {
@@ -51,12 +51,28 @@ const chartdata = [
     "Export Growth Rate": 4.88,
     "Import Growth Rate": 2.67,
   },
+  {
+    year: 1979,
+    "Export Growth Rate": 4.88,
+    "Import Growth Rate": 2.67,
+  },
+  {
+    year: 1979,
+    "Export Growth Rate": 4.88,
+    "Import Growth Rate": 2.67,
+  },
+  {
+    year: 1979,
+    "Export Growth Rate": 4.88,
+    "Import Growth Rate": 2.67,
+  },
   //...
 ];
 
 const dataFormatter = (number: number) => `${Intl.NumberFormat("us").format(number).toString()}%`;
 
 const LineChartPage = () => (
+    <div className="overflow-hidden ">
   <Card>
     <Title>Export/Import Growth Rates (1970 to 2021)</Title>
     <LineChart
@@ -70,6 +86,20 @@ const LineChartPage = () => (
       yAxisWidth={40}
     />
   </Card>
+  <Card>
+    <Title>Export/Import Growth Rates (1970 to 2021)</Title>
+    <AreaChart
+      className="mt-6"
+      data={chartdata}
+      index="year"
+      curveType="monotone"
+      categories={["Export Growth Rate", "Import Growth Rate"]}
+      colors={["emerald", "gray"]}
+      valueFormatter={dataFormatter}
+      yAxisWidth={40}
+    />
+  </Card>
+  </div>
 );
 
 export default LineChartPage
